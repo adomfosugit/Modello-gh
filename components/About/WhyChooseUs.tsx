@@ -7,7 +7,7 @@ const WhyChooseUs = () => {
       <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 md:p-12 shadow-sm hover:shadow-lg transition-shadow duration-300">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-          Why Choose <span className="text-[#BC9A38]">Modello</span>?
+          Why Choose <span className="text-primary">Modello</span>?
         </h2>
         
         {/* Content */}
@@ -19,7 +19,7 @@ const WhyChooseUs = () => {
             property is:
           </p>
           
-          <div className="pl-6 border-l-4 border-[#BC9A38] py-2">
+          <div className="pl-6 border-l-4 border-primary py-2">
             <p className="font-semibold text-gray-900">
               Impeccably maintained, preserved, and enhanced
             </p>
@@ -35,7 +35,7 @@ const WhyChooseUs = () => {
         {/* Read More Button */}
         <a 
           href="/about"
-          className="inline-flex items-center gap-2 bg-[#BC9A38] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#a68830] transition-colors duration-300 group"
+          className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-[#a68830] transition-colors duration-300 group"
         >
           Read More About Us
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

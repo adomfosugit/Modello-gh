@@ -1,8 +1,10 @@
-import CardFlip from "@/components/LandingPage/CardFlip";
+import About from "@/components/About/About";
+import Contact from "@/components/Appointment/Contact";
+import Footer from "@/components/Footer/Footer";
 import Landing from "@/components/LandingPage/Landing";
-import About from "@/components/Navbar/About/About";
-import Navbar from "@/components/Navbar/Navbar";
-import Image from "next/image";
+import Service from "@/components/Services/Process";
+import ServicesShowcase from "@/components/Services/ShowCAse";
+
 
 export default function Home() {
   return (
@@ -11,6 +13,10 @@ export default function Home() {
       
       <Landing />
       <About />
+      <Service />
+      <ServicesShowcase />
+      <Contact />
+      <Footer />
 
       
 
