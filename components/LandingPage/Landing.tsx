@@ -19,10 +19,10 @@ const Landing = (props: Props) => {
       <p className='text-primary text-xl font-bold'>
       <TextType  text={["Your Space, our shine","Turning Everyday Spaces Into Bright Places.", "A Fresh Touch for Every Surface.", "Detail-Driven, Shine-Guaranteed." , "Professional Cleaning, Personal Care."]} typingSpeed={60} pauseDuration={1500} showCursor={true} cursorCharacter="|"  textColors={['black']}/>
       </p>
-    <div className='flex flex-row space-x-3 mt-2'>
+ {/*   <div className='flex flex-row space-x-3 mt-2'>
         <Button className='w-[150px]'>Services</Button>
         <Button variant={'secondary'} className='w-[150px] border border-1 border-primary text-primary'>Book Appointment</Button>
-    </div>
+    </div>   */}
     </div>
 
   </div>

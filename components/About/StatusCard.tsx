@@ -13,7 +13,7 @@ const StatusCard = ({title, subtitle, countdown}: Props) => {
   return (
     
   
-    <SpotlightCard className="bg-white" spotlightColor="rgba(98, 40, 207, 0.89)">
+    <SpotlightCard className="bg-white" spotlightColor="rgba(45, 33, 211, 0.89)">
       <div className="relative z-10">
         <h3 className="text-2xl font-bold text-gray-900 mb-3 text-nowrap">
         <CountUp from={0} to={countdown} separator="," direction="up" duration={1} className="count-up-text" />

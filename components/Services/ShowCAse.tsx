@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react';
-import { Sparkles, Home, Building2, Package, Sofa, Bug, Leaf } from 'lucide-react';
+import { Sparkles} from 'lucide-react';
+import Link from 'next/link';
 
 const ServicesShowcase = () => {
   const [hoveredId, setHoveredId] = useState(null);
@@ -10,49 +11,49 @@ const ServicesShowcase = () => {
       id: 1,
       ImageSrc: '/Industrial.png',
       TagContent: 'Industrial Cleaning',
-      icon: Building2,
+      Link: "/Services/industrial-cleaning",
       description: 'Professional cleaning solutions for industrial facilities'
     },
     {
       id: 2,
       ImageSrc: '/Casual Home Cleaning.png',
       TagContent: 'Domestic/Commercial Cleaning',
-      icon: Home,
+      Link: "/Services/domestic-commercial-cleaning",
       description: 'Comprehensive cleaning for homes and offices'
     },
     {
       id: 3,
-      ImageSrc: '/pexels-shvetsa-5027619.jpg',
+      ImageSrc: '/pexels-pixabay-38325.jpg',
       TagContent: 'Carpet Cleaning',
-      icon: Package,
+      Link: "/Services/carpet-cleaning",
       description: 'Deep cleaning and stain removal for all carpet types'
     },
     {
       id: 4,
       ImageSrc: '/ApartmentCleaning.jpeg',
       TagContent: 'Apartment Cleaning',
-      icon: Building2,
+      Link: "/Services/apartment-cleaning",
       description: 'Specialized cleaning services for apartment living'
     },
     {
       id: 5,
       ImageSrc: '/SafaCleaning.jpg',
       TagContent: 'Sofa Cleaning',
-      icon: Sofa,
+      Link: "/Services/sofa-cleaning",
       description: 'Expert upholstery and furniture cleaning'
     },
     {
       id: 6,
       ImageSrc: '/PestFumigation.jpg',
       TagContent: 'Pest Control and Fumigation',
-      icon: Bug,
+      Link: "/Services/fumigation",
       description: 'Safe and effective pest elimination solutions'
     },
     {
       id: 7,
       ImageSrc: '/GardeningBeautification.jpg',
       TagContent: 'Gardening, Beautification & Landscaping services',
-      icon: Leaf,
+      Link: "/Services/gardening",
       description: 'Transform your outdoor spaces with expert care'
     }
   ];
@@ -62,7 +63,7 @@ const ServicesShowcase = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-2 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full mb-6">
             <Sparkles className="w-5 h-5" />
             <span className="font-semibold">Our Services</span>
           </div>
@@ -77,15 +78,16 @@ const ServicesShowcase = () => {
         {/* Services Grid */}
         <div className="flex flex-wrap justify-center gap-8">
           {services.map((service) => {
-            const Icon = service.icon;
+           
             return (
-              <div
+              <Link href={service.Link}
                 key={service.id}
                 className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-md"
                 /** @ts-ignore */
                 onMouseEnter={() => setHoveredId(service.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
+               
                 {/* Image Container */}
                 <div className="relative h-64 overflow-hidden bg-gradient-to-br from-blue-100 to-slate-100">
                   <img
@@ -103,7 +105,7 @@ const ServicesShowcase = () => {
                   
                   {/* Floating Icon */}
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-xl shadow-lg transform translate-y-0 group-hover:-translate-y-1 transition-transform duration-300">
-                    <Icon className="w-6 h-6 text-blue-600" />
+                    
                   </div>
                 </div>
 
@@ -116,15 +118,13 @@ const ServicesShowcase = () => {
                     {service.description}
                   </p>
                   
-                  {/* CTA Button */}
-                  <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-xl opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500 hover:from-blue-700 hover:to-blue-800">
-                    Learn More
-                  </button>
+             
+               
                 </div>
 
                 {/* Decorative Element */}
                 <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl group-hover:bg-blue-600/20 transition-colors duration-500" />
-              </div>
+              </Link>
             );
           })}
         </div>
