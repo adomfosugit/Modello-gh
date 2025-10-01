@@ -115,36 +115,6 @@ const Footer = () => {
 
           {/* Column 4 - Newsletter & Social */}
           <div>
-            <h4 className="text-lg font-bold mb-4">Newsletter</h4>
-            <p className="text-sm text-slate-300 mb-4">
-              Subscribe to get updates on our latest services and special offers.
-            </p>
-            <div className="space-y-3">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="w-full px-4 py-3 rounded-lg bg-slate-700/50 border border-slate-600
-                           text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent
-                           focus:outline-none transition-all text-sm"
-              />
-              <button
-                onClick={handleSubscribe}
-                disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold py-3 px-6 rounded-lg
-                           hover:from-blue-700 hover:to-blue-800 transition-all duration-300 flex items-center justify-center gap-2
-                           disabled:opacity-50 disabled:cursor-not-allowed text-sm"
-              >
-                {loading ? (
-                  'Subscribing...'
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" /> Subscribe
-                  </>
-                )}
-              </button>
-            </div>
 
             <div className="mt-6">
               <h4 className="text-lg font-bold mb-4">Follow Us</h4>
