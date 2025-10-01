@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
 import { MapPin, Loader2 } from "lucide-react";
+import Map from "@/components/Map";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +21,6 @@ const Contact = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  const [gettingLocation, setGettingLocation] = useState(false);
 
   const services = [
     "Industrial Cleaning",
@@ -53,40 +53,18 @@ const Contact = () => {
     }
   };
 
-  const handleUseMyLocation = () => {
-    if (!navigator.geolocation) {
-      toast.error("Geolocation is not supported by your browser");
-      return;
-    }
 
-    setGettingLocation(true);
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-        
-        const address = await getAddressFromCoordinates(lat, lng);
-        
-        setFormData((prev) => ({
-          ...prev,
-          location: address,
-          coordinates: { lat, lng }
-        }));
-        
-        setGettingLocation(false);
-        toast.success("Location captured successfully!");
-      },
-      (error) => {
-        setGettingLocation(false);
-        console.error("Error getting location:", error);
-        toast.error("Unable to get your location. Please enter manually.");
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 0
-      }
-    );
+
+  const handleMapLocationChange = async (location: { lat: number; lng: number }) => {
+    const address = await getAddressFromCoordinates(location.lat, location.lng);
+    
+    setFormData((prev) => ({
+      ...prev,
+      location: address,
+      coordinates: { lat: location.lat, lng: location.lng }
+    }));
+    
+    toast.success("Location selected from map!");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -99,15 +77,15 @@ const Contact = () => {
 
     emailjs.send(
         "service_6agglsb",
-        "template_kjmb6vw",
+        "template_3c00wb7",
         {
           from_name: formData.name,
-          to_name: "Adom Fosu",
+          to_name: "Modello GH",
           email: formData.email,
           phone: formData.phone,
           service: formData.service,
           location: locationData,
-          to_email: "adomfosu2000@gmail.com",
+          to_email: "info@modellogh.com",
           message: formData.message,
         },
         "JRIwRiuqHOrgTy_Mg"
@@ -228,40 +206,32 @@ const Contact = () => {
                   <label htmlFor="location" className="block text-sm font-medium text-corporate-navy mb-2">
                     Location *
                   </label>
-                  <div className="flex gap-2">
-                    <Input
-                      id="location"
-                      name="location"
-                      type="text"
-                      required
-                      value={formData.location}
-                      onChange={handleInputChange}
-                      className="flex-1"
-                      placeholder="e.g., Kumasi, Accra, Takoradi"
-                    />
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={handleUseMyLocation}
-                      disabled={gettingLocation}
-                      className="whitespace-nowrap"
-                    >
-                      {gettingLocation ? (
-                        <>
-                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                          Getting...
-                        </>
-                      ) : (
-                        <>
-                          <MapPin className="w-4 h-4 mr-2" />
-                          Use My Location
-                        </>
-                      )}
-                    </Button>
+
+                  {/* Embedded Map */}
+                  <div className="border rounded-lg p-2 bg-muted/20 mb-2">
+                    <Map onChange={handleMapLocationChange} />
+                    <p className="text-xs text-muted-foreground mt-2 text-center">
+                      Search for your location, drag the marker, or click "Get Location" button on the map
+                    </p>
                   </div>
+
                   {formData.coordinates.lat && formData.coordinates.lng && (
-                    <p className="text-xs text-green-600 mt-2">
-                      ✓ Location captured: {formData.coordinates.lat.toFixed(6)}, {formData.coordinates.lng.toFixed(6)}
+                    <div className="space-y-1">
+                      <p className="text-sm text-green-600 font-medium">
+                        ✓ Location Selected
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {formData.location}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Coordinates: {formData.coordinates.lat.toFixed(6)}, {formData.coordinates.lng.toFixed(6)}
+                      </p>
+                    </div>
+                  )}
+                  
+                  {!formData.coordinates.lat && !formData.coordinates.lng && (
+                    <p className="text-xs text-red-500">
+                      Please select your location using the map above
                     </p>
                   )}
                 </div>
