@@ -10,7 +10,9 @@ export default function Home() {
     <div className="flex flex-col ">
      
       
+
       <Landing />
+      
       <About />
       <Service />
       <ServicesShowcase />

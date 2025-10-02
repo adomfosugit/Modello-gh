@@ -66,8 +66,11 @@ const ScrollStack: React.FC<ScrollStackProps> = ({ children }) => (
 
 const Service: React.FC = () => {
   return (
-    <div className="min-h-screen">
+    <div className="flex flex-col">
+      
       <ScrollStack>
+
+        <h1 className='text-5xl text-primary text-center font-bold pt-30'>How it Works</h1>
         <ScrollStackItem index={0} logo={<ClipboardList className="w-12 h-12 text-blue-600" />}>
           <h2 className="text-4xl font-bold text-slate-800 mb-4">Pick a suitable Plan</h2>
           <p className="text-lg text-slate-600 leading-relaxed">

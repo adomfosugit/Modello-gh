@@ -37,7 +37,7 @@ export default function RootLayout({
 </div>
 
 {/* Add padding to prevent content from going under navbar */}
-<div className="pt-20">
+<div className="pt-20 ">
   {children}
 </div>
 <Footer />

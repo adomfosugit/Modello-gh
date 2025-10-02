@@ -120,3 +120,18 @@
     @apply bg-background text-foreground;
   }
 }
+h1, h2,h3,h4,h5,h6 {
+  font-family: var(--font-manrope), system-ui, -apple-system, sans-serif;
+}
+
+p {
+font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+.hero {
+background-image: url('/hero-ban.jpg');
+background-size: cover;
+background-position: top;
+background-repeat: no-repeat;
+height: 100%;
+}

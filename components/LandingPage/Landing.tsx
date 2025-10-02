@@ -3,52 +3,84 @@ import React from 'react'
 
 import TextType from '../TextType'
 import CardFlip from './CardFlip'
+import { Button } from '../ui/button'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { Badge } from '../ui/badge'
+import StatusCard from '../About/StatusCard'
+import { AboutCardContent } from '@/Constants'
 
 type Props = {}
 
 const Landing = (props: Props) => {
   return (
-    <div className='min-h-screen flex flex-col lg:flex-row justify-center items-center bg-gradient-to-tl from-blue-500/60 to-transparent px-4 py-8 lg:py-0'>
-      {/* Text Content Section */}
-      <div className='w-full lg:w-1/2 flex items-center justify-center lg:min-h-screen'>
-        <div className='px-4 sm:px-6 lg:px-8 py-6 lg:py-4 rounded max-w-3xl'>
-          <p className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-manrope font-bold leading-tight'>
-            The Art of a <span className='text-primary'>Perfect</span> Clean.
-          </p>
-          <p className='text-primary text-lg sm:text-xl md:text-2xl lg:text-xl font-bold mt-4'>
-            <TextType 
-              text={[
-                "Your Space, our shine",
-                "Turning Everyday Spaces Into Bright Places.", 
-                "A Fresh Touch for Every Surface.", 
-                "Detail-Driven, Shine-Guaranteed.", 
-                "Professional Cleaning, Personal Care."
-              ]} 
-              typingSpeed={60} 
-              pauseDuration={1500} 
-              showCursor={true} 
-              cursorCharacter="|"  
-              textColors={['black']}
-            />
-          </p>
-          {/* Uncomment if needed
-          <div className='flex flex-col sm:flex-row gap-3 mt-6'>
-            <Button className='w-full sm:w-[150px]'>Services</Button>
-            <Button variant={'secondary'} className='w-full sm:w-[150px] border border-1 border-primary text-primary'>
-              Book Appointment
-            </Button>
-          </div>
-          */}
-        </div>
-      </div>
+    <section className="relative hero overflow-hidden py-32 h-full">
+    {/* Gradient overlay */}
+<div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+  <div className="container relative z-10 mx-auto px-4">
+<div className="space-y-8 items-center">
+<Badge
+  variant="outline"
+  className="bg-primary/40 border-sky-700 px-4 py-2 rounded-4xl text-white text-sm font-medium"
+>
 
-      {/* Card Section - Below text on mobile, side by side on large screens */}
-      <div className='w-full lg:w-1/2 flex justify-center items-center mt-8 lg:mt-0 pb-8 lg:pb-0'>
-        <div className='w-full max-w-sm sm:max-w-md lg:max-w-lg'>
-          <CardFlip />
-        </div>
-      </div>
-    </div>
+</Badge>
+<h1
+
+className="text-3xl md:text-4xl lg:text-5xl font-seondary font-bold text-white leading-tight">
+  Sparkling Spaces, <br />
+  <span className="inter text-primary">Exceptional Results</span>
+</h1>
+<p
+
+className="text-white/80 text-lg md:text-xl max-w-md">
+  <TextType 
+                text={[
+                  "Your Space, our shine",
+                  "Turning Everyday Spaces Into Bright Places.", 
+                  "A Fresh Touch for Every Surface.", 
+                  "Detail-Driven, Shine-Guaranteed.", 
+                  "Professional Cleaning, Personal Care."
+                ]} 
+                typingSpeed={60} 
+                pauseDuration={1500} 
+                showCursor={true} 
+                cursorCharacter="|"  
+                textColors={['white']}
+              />
+</p>
+<div className="flex flex-col sm:flex-row gap-4">
+  <Button
+    asChild
+    size="lg"
+    className="bg-primary text-black hover:bg-primary/80"
+  >
+    
+    <Link href="/Services">
+    Services  <ArrowRight className="ml-2 h-4 w-4" />
+    </Link>
+  </Button>
+  <Button
+    asChild
+    variant="secondary"
+    size="lg"
+    className="bg-white/30 border-white/40 hover:bg-white/60"
+  >
+    <Link className="text-white hover:text-black" href="/doctors">
+    Book Appointment
+    </Link>
+  </Button>
+</div>
+</div>
+                     <div className='h-1/4 flex flex-col md:flex-row space-x-3 w-full flex-start justify-evenly mt-30 md:mt-20  space-y-3  '>
+                            {AboutCardContent.map((item) => (
+                                <StatusCard key={item.id}  title={item.title}  subtitle={item.subtitle} countdown={item.countdown}/>
+                            ))}
+                            </div>
+                
+
+</div>
+</section>
   )
 }
 
