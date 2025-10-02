@@ -66,7 +66,7 @@ className="text-white/80 text-lg md:text-xl max-w-md">
     size="lg"
     className="bg-white/30 border-white/40 hover:bg-white/60"
   >
-    <Link className="text-white hover:text-black" href="/doctors">
+    <Link className="text-white hover:text-black" href="/Contact">
     Book Appointment
     </Link>
   </Button>
